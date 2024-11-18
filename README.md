@@ -82,4 +82,4 @@ A simple web application that allows users to post, edit, and delete poems. The 
 ## License
 This project is licensed under the MIT License.
 
-> Feel free to modify this template to better suit your project’s specific needs. If you need further customization or have any questions, let me know!
+Feel free to modify this template to better suit your project’s specific needs. If you need further customization or have any questions, let me know!
