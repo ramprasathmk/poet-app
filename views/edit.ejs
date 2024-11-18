@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Poem</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Edit Poem</h1>
+    <form action="/poems/<%= poem._id %>" method="POST">
+        <input type="text" name="title" placeholder="Title" value="<%= poem.title %>" required>
+        <textarea name="body" placeholder="Poem" required><%= poem.body %></textarea>
+        <input type="text" name="author" placeholder="Author" value="<%= poem.author %>" required>
+        <button type="submit">Update Poem</button>
+    </form>
+</body>
+</html>

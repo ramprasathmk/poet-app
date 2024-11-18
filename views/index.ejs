@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poet App</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1>Poet App</h1>
+            <form action="/search" method="GET" class="search-form">
+                <input type="text" name="query" placeholder="Search by title or author">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="form-container">
+            <form action="/poems" method="POST">
+                <input type="text" name="title" placeholder="Title" required>
+                <textarea name="body" placeholder="Poem" required></textarea>
+                <input type="text" name="author" placeholder="Author" required>
+                <button type="submit">Add Poem</button>
+            </form>
+        </div>
+        <ul>
+            <% poems.forEach(poem => { %>
+                <li>
+                    <h2><%= poem.title %></h2>
+                    <p><%= poem.body %></p>
+                    <p>By <%= poem.author %></p>
+                    <a href="/poems/<%= poem._id %>/edit">Edit</a>
+                    <form action="/poems/<%= poem._id %>/delete" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
