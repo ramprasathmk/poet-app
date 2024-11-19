@@ -1,8 +1,10 @@
 # Poet Posting Web Application
 
+
 ## Description
 
 A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.
+
 
 ## Features
 
@@ -10,6 +12,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 - Edit existing poems
 - Delete poems
 - View all posted poems
+
 
 ## Project Structure
 
@@ -30,6 +33,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 └─── /public
     └── styles.css
 ```
+
 
 ## Setup
 
@@ -56,6 +60,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 
 5. **Access the application:** Open your browser and navigate to http://localhost:3000
 
+
 ## Usage
 
 - Navigate to the home page to view all poems.
@@ -78,6 +83,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 - Mongoose
 
 - EJS (Embedded JavaScript templates)
+
 
 ## License
 This project is licensed under the MIT License.
