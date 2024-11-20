@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const poemsController = require('../controllers/poemsController');
 
-const Poem = require('../models/poem');
+const Poem = require('../models/Poem');
 
 exports.getAllPoems = async (req, res) => {
     // try {
