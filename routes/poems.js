@@ -5,12 +5,17 @@ const poemsController = require('../controllers/poemsController');
 const Poem = require('../models/poem');
 
 exports.getAllPoems = async (req, res) => {
-    try {
-        const poems = await Poem.find();
-        res.render('index', { poems }); // Ensure poems is passed here
-    } catch (err) {
-        res.status(500).send(err);
-    }
+    // try {
+    //     const poems = await Poem.find();
+    //     res.render('index', { poems }); // Ensure poems is passed here
+    // } catch (err) {
+    //     res.status(500).send(err);
+    // }
+
+    if (err) return err;
+
+    const poems = await Poem.find();
+    res.render('index', { poems });
 };
 
 router.get('/', poemsController.getAllPoems);
