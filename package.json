@@ -4,10 +4,8 @@
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "echo \"No Tests were found\" && exit 1",
     "start": "nodemon server.js",
-    "dev": "tsc --watch && nodemon dist",
-    "build": "tsc",
     "lint": "eslint"
   },
   "keywords": ["poet-app", "poem-app", "poem"],
