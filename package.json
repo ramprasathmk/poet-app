@@ -4,11 +4,16 @@
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "npx jest --detectOpenHandles",
+    "jtest": "jest",
     "start": "nodemon server.js",
     "lint": "eslint"
   },
-  "keywords": ["poet-app", "poem-app", "poem"],
+  "keywords": [
+    "poet-app",
+    "poem-app",
+    "poem"
+  ],
   "author": "Ramprasath M K",
   "license": "ISC",
   "dependencies": {
@@ -23,8 +28,10 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "mongoose": "^8.8.2",
     "nodemon": "^3.1.7",
+    "supertest": "^7.0.0",
     "typescript": "^5.6.3"
   },
   "repository": {
