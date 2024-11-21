@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+/**
+ *  Schema of the Poem
+ */
 const poemSchema = new mongoose.Schema({
     title: String,
     body: String,
