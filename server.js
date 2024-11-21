@@ -17,7 +17,7 @@ const DB_URL = process.env.MONGODB_URL;
 
 // Database Connection
 const database = mongoose.connect(DB_URL);
-if (!database) return err; else database.then( () => console.log("Connected to MongoDB"));
+if (!database) return err; else database.then( () => console.log("Connected to MongoDB") );
 
 // Configure Express Body
 app.use(bodyParser.urlencoded({ extended: true }));
