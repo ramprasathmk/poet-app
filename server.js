@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -5,10 +6,12 @@ const path = require('path');
 const app = express();
 const Poem = require('./models/poem');
 const PORT = process.env.PORT || 3000;
+const DB_URL = process.env.MONGODB_URL;
 
-mongoose.connect('mongodb://127.0.0.1:27017/poet_app')
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.log('Failed to connect to MongoDB', err));
+const database = mongoose.connect(DB_URL)
+.then(() => console.log("Connected to MongoDB"));
+
+if (!database) return err;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
