@@ -5,14 +5,22 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const Poem = require('./models/poem');
-const PORT = process.env.PORT || 3000;
+
+/** 
+ *  NOTE:
+ *      1. Create a .env file
+ *      2. Enter your port number, eg. PORT=3000
+ *      3. Enter your mongodb url, eg. DB_URL=mongodb://127.0.0.1:27017/your_database_name
+ * 
+*/
+const PORT = process.env.PORT;
 const DB_URL = process.env.MONGODB_URL;
 
-const database = mongoose.connect(DB_URL)
-.then(() => console.log("Connected to MongoDB"));
+// Database Connection
+const database = mongoose.connect(DB_URL);
+if (!database) return err; else database.then( () => console.log("Connected to MongoDB"));
 
-if (!database) return err;
-
+// Configure Express Body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
