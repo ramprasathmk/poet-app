@@ -4,8 +4,8 @@
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
   "main": "server.js",
   "scripts": {
-    "test": "npx jest --detectOpenHandles",
-    "jtest": "jest",
+    "test": "npx jest",
+    "run:jest": "jest --detectOpenHandles",
     "start": "nodemon server.js",
     "lint": "eslint"
   },

@@ -1,54 +1,60 @@
-require("dotenv").config();
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const path = require('path');
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const path = require("path");
 const app = express();
-const Poem = require('./models/poem');
+const Poem = require("./models/poem");
+const poemRoutes = require("./routes/poems");
 
-/** 
- *  NOTE:
- *      1. Create a .env file
- *      2. Enter your port number, eg. PORT=3000
- *      3. Enter your mongodb url, eg. DB_URL=mongodb://127.0.0.1:27017/your_database_name
-*/
-const PORT = process.env.PORT;
+require("dotenv").config();
+// Environment Variables
+const PORT = process.env.PORT || 3000;
 const DB_URL = process.env.MONGODB_URL;
 
-// Database Connection
-const database = mongoose.connect(DB_URL);
-if (!database) return err; else database.then( () => console.log("Connected to MongoDB") );
+// MongoDB Connection
+mongoose
+  .connect(DB_URL)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Failed to connect to MongoDB", err));
 
-// Configure Express Body
+// Test MongoDB Connection using Arrow Function
+async () => {
+  const DBconnection = await mongoose.connect(DB_URL);
+  if (!DBconnection) return err;
+};
+
+// Express Server
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, "public")));
+app.set("view engine", "ejs");
 
-app.use('/poems', require('./routes/poems'));
+app.use("/poems", poemRoutes);
 
-// Root route 
-app.get('/', async (req, res) => { 
-    try { 
-        const poems = await Poem.find(); 
-        res.render('index', { poems }); 
-    } catch (err) { 
-        console.error(err); 
-        res.status(500).send(err.message); 
-    } 
+// Express Root route
+app.get("/", async function (req, res) {
+  try {
+    const poems = await Poem.find();
+    res.render("index", { poems });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err.message);
+  }
 });
 
-app.get('/search', async (req, res) => {
-    const query = req.query.query;
-    try {
-        const poemsByTitle = await Poem.find({ title: new RegExp(query, 'i') });
-        const poemsByAuthor = await Poem.find({ author: new RegExp(query, 'i') });
-        res.render('search', { query, poemsByTitle, poemsByAuthor });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send(err.message);
-    }
+app.get("/search", async (req, res) => {
+  const query = req.query.query;
+  try {
+    const poemsByTitle = await Poem.find({ title: new RegExp(query, "i") });
+    const poemsByAuthor = await Poem.find({ author: new RegExp(query, "i") });
+    res.render("search", { query, poemsByTitle, poemsByAuthor });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err.message);
+  }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = { app, server };
