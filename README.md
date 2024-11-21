@@ -16,23 +16,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 
 ## Project Structure
 
-```m
-/poet-app
-│   package.json
-│   server.js
-└─── /models
-│   └── poem.js
-└─── /routes
-│   └── poems.js
-└─── /controllers
-│   └── poemsController.js
-└─── /views
-│   ├── index.ejs
-│   └── edit.ejs
-│   └── search.ejs
-└─── /public
-    └── styles.css
-```
+- refer [PROJECT STRUCTURE](./PROJECT_STRUCTURE.md)
 
 
 ## Setup
@@ -59,6 +43,15 @@ A simple web application that allows users to post, edit, and delete poems. The 
     ```
 
 5. **Access the application:** Open your browser and navigate to http://localhost:3000
+
+
+## Note
+
+- Create a .env file
+
+- Create your port number, eg. PORT=3000
+
+- Create your mongodb url, eg. DB_URL=mongodb://127.0.0.1:27017/your_database_name
 
 
 ## Usage
