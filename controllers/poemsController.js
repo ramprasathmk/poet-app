@@ -1,4 +1,4 @@
-const Poem = require('../models/Poem');
+const Poem = require('../models/poem');
 
 exports.getAllPoems = async (req, res) => {
     const poems = await Poem.find();

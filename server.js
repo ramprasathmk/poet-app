@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const Poem = require('./models/Poem');
+const Poem = require('./models/poem');
 const PORT = process.env.PORT || 3000;
 
 mongoose.connect('mongodb://127.0.0.1:27017/poet_app')
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
-app.use('/poems', require('./routes/Poems'));
+app.use('/poems', require('./routes/poems'));
 
 // Root route 
 app.get('/', async (req, res) => { 
