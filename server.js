@@ -11,7 +11,6 @@ const Poem = require('./models/poem');
  *      1. Create a .env file
  *      2. Enter your port number, eg. PORT=3000
  *      3. Enter your mongodb url, eg. DB_URL=mongodb://127.0.0.1:27017/your_database_name
- * 
 */
 const PORT = process.env.PORT;
 const DB_URL = process.env.MONGODB_URL;
