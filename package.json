@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
     "test": "jest",
+    "start": "nodemon ./src/server.js",
+    "dev": "tsc --watch && nodemon dist",
     "build": "tsc",
     "lint": "eslint"
   },
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "mongoose": "^8.8.2",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "typescript": "^5.6.3"
   }
 }
