@@ -10,7 +10,7 @@
     "build": "tsc",
     "lint": "eslint"
   },
-  "keywords": [],
+  "keywords": ["poet-app", "poem-app", "poem"],
   "author": "Ramprasath M K",
   "license": "ISC",
   "dependencies": {
