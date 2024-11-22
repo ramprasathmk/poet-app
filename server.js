@@ -20,7 +20,7 @@ mongoose
 // Test MongoDB Connection using Arrow Function
 async () => {
   const DBconnection = await mongoose.connect(DB_URL);
-  if (!DBconnection) return err;
+  if (!DBconnection) throw err;
 };
 
 // Express Server
