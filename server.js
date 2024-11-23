@@ -1,12 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const path = require("path");
 const app = express();
+const dotenv = require("dotenv");
 const Poem = require("./models/poem");
 const poemRoutes = require("./routes/poems");
 
-require("dotenv").config();
+dotenv.config();
+
 // Environment Variables
 const PORT = process.env.PORT || 3000;
 const DB_URL = process.env.MONGODB_URL;
@@ -24,6 +27,11 @@ async () => {
 };
 
 // Express Server
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
