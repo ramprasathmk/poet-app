@@ -7,7 +7,8 @@
     "test": "npx jest",
     "run:jest": "jest --detectOpenHandles",
     "start": "nodemon server.js",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build": "ncc build src/server.js -o dist"
   },
   "keywords": [
     "poet-app",
@@ -17,6 +18,7 @@
   "author": "Ramprasath M K",
   "license": "ISC",
   "dependencies": {
+    "@vercel/ncc": "^0.38.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
