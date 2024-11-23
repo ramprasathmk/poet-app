@@ -42,6 +42,12 @@ A simple web application that allows users to post, edit, and delete poems. The 
     nodemon server.js
     ```
 
+    `else use:`
+
+    ```bash
+    npm start
+    ```
+
 5. **Access the application:** Open your browser and navigate to http://localhost:3000
 
 
