@@ -2,10 +2,10 @@
   "name": "poet-app",
   "version": "1.0.0",
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
-  "main": "src/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "build": "ncc build src -o dist",
+    "build": "ncc build ./server.js -o dist",
     "test": "npx jest"
   },
   "keywords": [
