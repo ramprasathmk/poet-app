@@ -24,6 +24,10 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: Check Nodejs Installation
+      run: |
+        node --version
+        npm --version
     - name: Install Dependencies
       run: npm install
     - name: Start MongoDB
