@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
-    - name: Check Nodejs Installation
+    - name: Nodejs Installation Check
       run: |
         node --version
         npm --version
