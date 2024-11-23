@@ -23,7 +23,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/poet-app.git
+    git clone https://github.com/ramprasathmk/poet-app.git
     cd poet-app
     ```
 
