@@ -1,6 +1,6 @@
 {
   "name": "poet-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
   "main": "server.js",
   "scripts": {
@@ -38,5 +38,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ramprasathmk/poet-app.git"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "bugs": {
+    "url": "https://github.com/ramprasathmk/poet-app/issues"
+  },
+  "homepage": "https://github.com/ramprasathmk/poet-app#readme"
 }
