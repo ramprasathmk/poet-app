@@ -48,7 +48,12 @@ A simple web application that allows users to post, edit, and delete poems. The 
     npm start
     ```
 
-5. **Access the application:** Open your browser and navigate to http://localhost:3000
+5. **Build the application:**
+    ```bash
+    npm run build
+    ```
+
+6. **Access the application:** Open your browser and navigate to http://localhost:3000
 
 
 ## Note
