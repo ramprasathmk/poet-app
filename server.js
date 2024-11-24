@@ -12,7 +12,7 @@ dotenv.config();
 
 // Environment Variables
 const PORT = process.env.PORT || 3000;
-const DB_URL = process.env.MONGODB_URL;
+const DB_URL = process.env.DBCLUSTER_URL;
 
 // MongoDB Connection
 mongoose
