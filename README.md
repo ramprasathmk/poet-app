@@ -42,13 +42,23 @@ A simple web application that allows users to post, edit, and delete poems. The 
     nodemon server.js
     ```
 
-    `else use:`
+    otherwise, simply run the below **npm** command.
 
     ```bash
     npm start
     ```
 
-5. **Access the application:** Open your browser and navigate to http://localhost:3000
+5. **Build the application:**
+    ```bash
+    npm run build
+    ```
+
+6. **Pack the application:** packs application into `appname-version.tgz` file.
+    ```bash
+    npm pack
+    ```
+
+7. **Access the application:** Open your browser and navigate to http://localhost:3000
 
 
 ## Note

@@ -12,7 +12,7 @@ exports.getAllPoems = async (req, res) => {
     //     res.status(500).send(err);
     // }
 
-    if (err) return err;
+    if (err) throw err;
 
     const poems = await Poem.find();
     res.render('index', { poems });

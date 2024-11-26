@@ -1,4 +1,8 @@
 
+*.tgz
+*.zip
+
+.env
 .git
 .idea
 .vscode
