@@ -16,7 +16,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 
 ## Project Structure
 
-- refer [PROJECT STRUCTURE](./PROJECT_STRUCTURE.md)
+- refer Project Structure [here](./PROJECT_STRUCTURE.md).
 
 
 ## Setup
