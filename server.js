@@ -11,7 +11,7 @@ const poemRoutes = require("./routes/poems");
 dotenv.config();
 
 // Environment Variables
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const DB_URL = process.env.MONGODB_SERVER_URL;
 
 // MongoDB Connection
