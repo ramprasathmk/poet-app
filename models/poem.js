@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-/**
- *  Schema of the Poem
- */
+// poem Schema
 const poemSchema = new mongoose.Schema({
     title: String,
     body: String,
@@ -13,4 +11,6 @@ const poemSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Poem', poemSchema);
+const Poem = mongoose.model('Poem', poemSchema);
+
+module.exports = Poem;
