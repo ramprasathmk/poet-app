@@ -5,14 +5,14 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const dotenv = require("dotenv");
-const Poem = require("./models/poem");
+const Poem = require('./models/poem');
 const poemRoutes = require("./routes/poems");
 
 dotenv.config();
 
 // Environment Variables
 const PORT = process.env.PORT;
-const DB_URL = process.env.MONGODB_SERVER_URL;
+const DB_URL = process.env.MONGODB_LOCAL_URL;
 
 // MongoDB Connection
 mongoose
