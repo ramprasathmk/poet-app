@@ -7,7 +7,7 @@
     "start": "nodemon server.js",
     "dev": "nodemon dist/server.js",
     "build": "ncc build ./server.js -o dist",
-    "test": "npx jest"
+    "test": "jest"
   },
   "keywords": [
     "poet-app",
