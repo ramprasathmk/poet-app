@@ -33,7 +33,8 @@ app.use(cors({
   credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public"))); // Optional code
+app.use(express.json());
 app.set("view engine", "ejs");
 
 app.use("/poems", poemRoutes);
