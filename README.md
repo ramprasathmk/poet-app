@@ -83,6 +83,8 @@ A simple web application that allows users to post, edit, and delete poems. The 
 
 ## Technologies Used
 
+- Bootstrap CSS
+
 - Node.js
 
 - Express.js
