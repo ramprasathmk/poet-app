@@ -9,7 +9,7 @@ const asyncHandler = (fn) => {
 
 exports.getAllPoems = asyncHandler(async (req, res) => {
     const poems = await Poem.find();
-    res.render('index', { poems });
+    res.render('poems', { poems });
 });
 
 exports.createPoem = asyncHandler(async (req, res) => {
