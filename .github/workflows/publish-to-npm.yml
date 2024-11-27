@@ -23,18 +23,15 @@ jobs:
           --health-retries=5
 
     steps:
-      # Step 1: Checkout the code
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
           registry-url: 'https://registry.npmjs.org/'
 
-      # Step 3: Install MongoDB CLI Tools
       - name: Install MongoDB tools
         run: |
           wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
@@ -42,7 +39,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y mongodb-org-shell
 
-      # Step 4: Cache Node.js dependencies
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
@@ -51,28 +47,28 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      # Step 5: Install project dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 6: Run tests
+      - name: Bump version
+        run: |
+          NEW_VERSION=$(npm version patch)
+          echo "Bumped version to $NEW_VERSION"
+
       - name: Run tests
         env:
           MONGO_URI: mongodb://localhost:27017/poet-app
         run: npm test
 
-      # Step 7: Build the project (if applicable)
       - name: Build the project
         run: npm run build
 
-      # Step 8: Publish the package to npm
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish
 
-      # Step 9: Verify the publish step
-      - name: Post publish verification
+      - name: Verify Publish
         run: |
           echo "Package published successfully."
           npm view poet-app version
