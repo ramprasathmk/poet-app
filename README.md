@@ -16,7 +16,7 @@ A simple web application that allows users to post, edit, and delete poems. The 
 
 ## Project Structure
 
-- refer Project Structure [here](./PROJECT_STRUCTURE.md).
+- refer the Project Structure [here](./PROJECT_STRUCTURE.md).
 
 
 ## Setup
@@ -48,9 +48,13 @@ A simple web application that allows users to post, edit, and delete poems. The 
     npm start
     ```
 
-5. **Build the application:**
+5. **Build the application:** build the application and run the production build.
     ```bash
     npm run build
+    ```
+
+    ```bash
+    npm run dev
     ```
 
 6. **Pack the application:** packs application into `appname-version.tgz` file.
