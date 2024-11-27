@@ -33,22 +33,28 @@ app.use(cors({
   credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
 app.use("/poems", poemRoutes);
 
-// Express Root route
-app.get("/", async function (req, res) {
-  try {
-    const poems = await Poem.find();
-    res.render("index", { poems });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send(err.message);
-  }
+// Root route 
+app.get('/', (req, res) => { 
+  res.render('index'); 
 });
 
+// Poems route 
+app.get('/poems', async (req, res) => { 
+  try { 
+    const poems = await Poem.find(); 
+    res.render('poems', { poems }); 
+  } catch (err) { 
+    console.error(err); 
+    res.status(500).send(err.message); 
+  } 
+});
+
+// Search route
 app.get("/search", async (req, res) => {
   const query = req.query.query;
   try {
@@ -61,6 +67,7 @@ app.get("/search", async (req, res) => {
   }
 });
 
+// Listen to the PORT
 const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
