@@ -63,11 +63,20 @@ A simple web application that allows users to post, edit, and delete poems. The 
 
 ## Note
 
-- Create a .env file
+> - Create a `.env` file
+> - Enter your port number, eg. PORT=3000
+> - Then, enter your mongodb url, eg. MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/your_database_name
+> - Here `db_name` would be varied, so kindly use the same db_name for the whole project.
 
-- Create your port number, eg. PORT=3000
 
-- Create your mongodb url, eg. DB_URL=mongodb://127.0.0.1:27017/your_database_name
+## Sample Code:
+
+1. `.env` file:
+  
+    ```text
+    PORT=3000
+    MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/poemdb
+    ```
 
 
 ## Usage
