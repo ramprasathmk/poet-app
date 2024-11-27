@@ -1,17 +1,17 @@
-# Poet Posting Web Application
+# Quote Posting Web Application
 
 
 ## Description
 
-A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.
+A simple web application that allows users to post, edit, and delete quotes. The application is built using Node.js and MongoDB.
 
 
 ## Features
 
-- Post new poems
-- Edit existing poems
-- Delete poems
-- View all posted poems
+- Post new quotes
+- Edit existing quotes
+- Delete quotes
+- View all posted quotes
 
 
 ## Project Structure
@@ -79,19 +79,19 @@ A simple web application that allows users to post, edit, and delete poems. The 
   
     ```text
     PORT=3000
-    MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/poemdb
+    MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/quotes_db
     ```
 
 
 ## Usage
 
-- Navigate to the home page to view all poems.
+- Navigate to the home page to view all quotes.
 
-- Use the form to add a new poem.
+- Use the form to add a new quote.
 
-- Click "Edit" to modify an existing poem.
+- Click "Edit" to modify an existing quote.
 
-- Click "Delete" to remove a poem.
+- Click "Delete" to remove a quote.
 
 
 ## Technologies Used
