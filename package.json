@@ -1,13 +1,14 @@
 {
   "name": "poet-app",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
   "main": "server.js",
   "scripts": {
+    "test": "jest",
     "start": "nodemon server.js",
     "dev": "nodemon dist/server.js",
     "build": "ncc build ./server.js -o dist",
-    "test": "jest"
+    "serve:build": "echo \"P1: Building the app.\" && npm run build && echo \"P2: Serving your app.\" && npm run dev"
   },
   "keywords": [
     "poet-app",

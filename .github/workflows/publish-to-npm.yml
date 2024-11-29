@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'package.json'
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * 1,4"
 
 jobs:
   publish:
@@ -17,74 +19,54 @@ jobs:
         ports:
           - 27017:27017
         options: >-
-          --health-cmd="mongo --eval 'db.runCommand({ ping: 1 })'"
+          --health-cmd="mongosh --eval 'db.runCommand({ ping: 1 })'"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
 
     steps:
-      # Step 1: Checkout the code
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org/'
 
-      # Step 3: Install MongoDB tools
-      - name: Install MongoDB tools
-        run: |
-          wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-          echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-          sudo apt-get update
-          sudo apt-get install -y mongodb-org-shell
-
-      # Step 4: Cache Node.js dependencies
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Step 5: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 6: Commit any untracked changes
-      - name: Commit untracked changes
+      - name: Wait for MongoDB
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Auto-commit untracked changes"
+          for i in {1..10}; do
+            if mongosh --eval "db.runCommand({ ping: 1 })"; then
+              echo "MongoDB is ready";
+              exit 0;
+            fi;
+            echo "Waiting for MongoDB...";
+            sleep 5;
+          done;
+          exit 1
 
-      # Step 7: Bump version
-      - name: Bump version
-        run: npm version patch --no-git-tag-version
-
-      # Step 8: Run tests
       - name: Run tests
         env:
-          MONGO_URI: mongodb://localhost:27017/poet-app
+          MONGO_URI: mongodb://localhost:27017/poet_app
         run: npm test
 
-      # Step 9: Build the project (if applicable)
-      - name: Build the project
-        run: npm run build
-
-      # Step 10: Publish the package to npm
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
+        run: |
+          CURRENT_VERSION=$(npm view poet-app version)
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          if [ "$CURRENT_VERSION" = "$PACKAGE_VERSION" ]; then
+            echo "Version $PACKAGE_VERSION already published. Skipping publish.";
+          else
+            npm publish;
+          fi
 
-      # Step 11: Verify the publish step
-      - name: Verify Publish
+      - name: Post publish verification
         run: |
           echo "Package published successfully."
           npm view poet-app version
