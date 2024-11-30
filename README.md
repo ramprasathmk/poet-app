@@ -83,6 +83,10 @@ A simple web application that allows users to post, edit, and delete quotes. The
     ```
 
 
+## 👇 Poet App Deployed here 
+ - [Poet App](https://poet-app.onrender.com)
+
+
 ## Usage
 
 - Navigate to the home page to view all quotes.
