@@ -8,6 +8,8 @@
     "start": "nodemon server.js",
     "dev": "nodemon dist/server.js",
     "build": "ncc build ./server.js -o dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "serve:build": "echo \"P1: Building the app.\" && npm run build && echo \"P2: Serving your app.\" && npm run dev"
   },
   "keywords": [
