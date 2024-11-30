@@ -1,0 +1,15 @@
+# Ignore files and directories
+*.tgz
+*.zip
+*.rar
+
+.env
+.git
+.idea
+.vscode
+
+node_modules
+prod
+dist
+build
+coverage
