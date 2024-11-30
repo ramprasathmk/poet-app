@@ -1,4 +1,4 @@
-# Quote Posting Web Application
+# Quote | Poem Posting Web Application
 
 
 ## Description
@@ -83,7 +83,7 @@ A simple web application that allows users to post, edit, and delete quotes. The
     ```
 
 
-## 👇 Poet App Deployed here 
+## 👇 Poet App is Deployed here 
  - [Poet App](https://poet-app.onrender.com)
 
 
