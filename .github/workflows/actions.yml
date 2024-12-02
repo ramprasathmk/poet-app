@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Run Poet-App
 
 on:
   push:
@@ -49,24 +49,13 @@ jobs:
           done;
           exit 1
 
+      - name: Run build
+        run: npm run build
+
+      - name: Run production
+        run: npm run dev
+
       - name: Run tests
         env:
           MONGO_URI: mongodb://localhost:27017/poet_app
         run: npm test
-
-      - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          CURRENT_VERSION=$(npm view poet-app version)
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          if [ "$CURRENT_VERSION" = "$PACKAGE_VERSION" ]; then
-            echo "Version $PACKAGE_VERSION already published. Skipping publish.";
-          else
-            npm publish;
-          fi
-
-      - name: Post publish verification
-        run: |
-          echo "Package published successfully."
-          npm view poet-app version
