@@ -38,6 +38,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 // Express Server
+const app = express();
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: ["GET", "POST"],
