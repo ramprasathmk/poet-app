@@ -12,19 +12,13 @@ dotenv.config();
 
 // Environment Variables
 const PORT = process.env.PORT;
-const DB_URL = process.env.MONGODB_URI;
+const DB_URL = process.env.MONGODB_LOCAL_URL;
 
 // MongoDB Connection
 mongoose
   .connect(DB_URL)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Failed to connect to MongoDB", err));
-
-// Test MongoDB Connection using Arrow Function
-async () => {
-  const DBconnection = await mongoose.connect(DB_URL);
-  if (!DBconnection) throw err;
-};
 
 // Express Server
 app.use(cors({
@@ -42,17 +36,6 @@ app.use("/poems", poemRoutes);
 // Root route 
 app.get('/', (req, res) => { 
   res.render('index'); 
-});
-
-// Poems route 
-app.get('/poems', async (req, res) => { 
-  try { 
-    const poems = await Poem.find(); 
-    res.render('poems', { poems }); 
-  } catch (err) { 
-    console.error(err); 
-    res.status(500).send(err.message); 
-  } 
 });
 
 // Search route
