@@ -2,17 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const path = require("path");
-const app = express();
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const session = require("express-session");
 const dotenv = require("dotenv");
 const Poem = require('./models/poem');
 const poemRoutes = require("./routes/poems");
+const authRoutes = require("./routes/auth");
 
 dotenv.config();
 
 // Environment Variables
 const PORT = process.env.PORT;
-const DB_URL = process.env.MONGODB_URI;
+const DB_URL = process.env.MONGODB_LOCAL_URL;
 
 // MongoDB Connection
 mongoose
@@ -20,11 +22,20 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Failed to connect to MongoDB", err));
 
-// Test MongoDB Connection using Arrow Function
-async () => {
-  const DBconnection = await mongoose.connect(DB_URL);
-  if (!DBconnection) throw err;
-};
+// Passport Configuration
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    // Authentication logic here
+  }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  // Find user by ID logic here
+});
 
 // Express Server
 app.use(cors({
@@ -33,26 +44,23 @@ app.use(cors({
   credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static(path.join(__dirname, "public"))); // Optional code
 app.use(express.json());
 app.set("view engine", "ejs");
 
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/poems", poemRoutes);
+app.use("/auth", authRoutes);
 
 // Root route 
 app.get('/', (req, res) => { 
   res.render('index'); 
-});
-
-// Poems route 
-app.get('/poems', async (req, res) => { 
-  try { 
-    const poems = await Poem.find(); 
-    res.render('poems', { poems }); 
-  } catch (err) { 
-    console.error(err); 
-    res.status(500).send(err.message); 
-  } 
 });
 
 // Search route
@@ -67,6 +75,14 @@ app.get("/search", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
+// Middleware to protect routes
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/auth/login');
+}
 
 // Listen to the PORT
 const server = app.listen(PORT, () => {

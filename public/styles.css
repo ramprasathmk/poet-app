@@ -124,3 +124,44 @@ form button:hover {
     background-color: #0056b3;
 }
 
+/* Styles for login, signup, and email verification pages */
+.login-container, .signup-container, .verify-email-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1, .signup-container h1, .verify-email-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container form, .signup-container form, .verify-email-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container form input, .signup-container form input, .verify-email-container form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.login-container form button, .signup-container form button, .verify-email-container form button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.login-container form button:hover, .signup-container form button:hover, .verify-email-container form button:hover {
+    background-color: #0056b3;
+}

@@ -35,7 +35,7 @@ afterAll(async () => {
 // MongoDB Database Connection Test
 describe('Database Connection', () => {
   it('should return database connection results', async () => {
-    const DB_URL = process.env.MONGODB_SERVER_URL || 'mongodb://127.0.0.1:27017/poet_app'
+    const DB_URL = process.env.MONGODB_LOCAL_URL;
     const database = mongoose.connect(DB_URL)
     .then( () => { console.log('Connected to MongoDB') } )
     .catch( (err) => {console.error("Error ", err)} );
