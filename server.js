@@ -8,7 +8,7 @@ const session = require("express-session");
 const dotenv = require("dotenv");
 const Poem = require('./models/poem');
 const poemRoutes = require("./routes/poems");
-const authRoutes = require("./routes/auth");
+// const authRoutes = require("./routes/auth");
 
 dotenv.config();
 
@@ -57,7 +57,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/poems", poemRoutes);
-app.use("/auth", authRoutes);
+// app.use("/auth", authRoutes);
 
 // Root route 
 app.get('/', (req, res) => { 
@@ -78,16 +78,16 @@ app.get("/search", async (req, res) => {
 });
 
 // Middleware to protect routes
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/auth/login');
-}
+// function isAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   }
+//   res.redirect('/auth/login');
+// }
 
 // Listen to the PORT
 const server = app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port \`${PORT}\``);
 });
 
 module.exports = { app, server };
