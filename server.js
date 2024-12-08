@@ -39,6 +39,11 @@ app.get('/', (req, res) => {
   res.render('index'); 
 });
 
+// Home Route
+app.get('/home', (req, res) => { 
+  res.render('index'); 
+});
+
 // Search route
 app.get("/search", async (req, res) => {
   const query = req.query.query;
