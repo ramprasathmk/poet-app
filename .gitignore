@@ -1,16 +1,26 @@
-# Ignore files and directories
-*.tgz
-*.zip
-*.rar
-
-.env
+# Ignore IDE/editor files
+.vs
 .git
 .idea
 .vscode
 
+# Ignore Node dependencies
 node_modules
-prod
+
+# Ignore Node out directory
 dist
 build
+
+# Ignore test coverages
 coverage
+
+# Ignore sensitive files (e.g., config or env files)
+.env
+
+# Ignore archives
+*.tgz
+*.zip
+*.rar
+
+# Ignore vercel configs
 .vercel
