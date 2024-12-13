@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  # web
+  backend: 
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - poet-app-network
+
+  # db
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - poet-app-network
+
+  # network
+networks:
+  poet-app-network:
+    driver: bridge
