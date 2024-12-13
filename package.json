@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon server.js",
-    "dev": "nodemon dist/server.js",
+    "start": "node server.js",
+    "dev": "node dist/server.js",
     "build": "ncc build ./server.js -o dist",
     "serve:build": "echo \"P1: Building the app.\" && npm run build && echo \"P2: Serving your app.\" && npm run dev"
   },
