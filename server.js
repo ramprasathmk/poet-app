@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const compression = require('compression');
 const dotenv = require("dotenv");
 const Poem = require('./models/poem');
 const poemRoutes = require("./routes/poems");
@@ -21,6 +22,7 @@ mongoose
 
 // Express Server
 const app = express();
+app.use(compression());
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: ["GET", "POST"],
