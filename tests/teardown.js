@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 module.exports = async () => {
-    await mongoose.connection.close();
-};
+  await mongoose.connection.close()
+}
