@@ -10,8 +10,9 @@
     "lint": "prettier --check {**/,}*.js",
     "dev": "nodemon server.js",
     "build": "ncc build ./server.js -o dist",
-    "serve:build": "nodemon dist/index.js",
-    "dev:build": "echo \"P1: Building the app.\" && npm run build && echo \n\"P2: Serving your app.\" && npm run dev"
+    "start:build": "node dist/index.js",
+    "dev:build": "nodemon dist/index.js",
+    "serve:build": "echo \"P1: Building the app.\" && npm run build && echo \n\"P2: Serving your app.\" && npm run dev"
   },
   "keywords": [
     "poet-app",
