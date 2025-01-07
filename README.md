@@ -1,5 +1,6 @@
 # Quote | Poem Posting Web Application
 
+[![CI](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml/badge.svg)](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml)
 
 ## Description
 
@@ -14,14 +15,17 @@ A simple web application that allows users to post, edit, and delete quotes. The
 - View all posted quotes
 
 
-## Project Structure
+## Prerequsites
 
-- refer the Project Structure [here](./PROJECT_STRUCTURE.md).
+- Node.js
+- MongoDB Compass
+- Visual Studio Code
+- Web Browser (eg. chrome)
 
 
-## Setup
+## How To Run
 
-1. **Clone the repository:**
+1. **Clone the repo:**
     ```bash
     git clone https://github.com/ramprasathmk/poet-app.git
     cd poet-app
@@ -32,34 +36,25 @@ A simple web application that allows users to post, edit, and delete quotes. The
     npm install
     ```
 
-3. **Start MongoDB:** Ensure MongoDB is running locally. If you're using a local installation, start MongoDB with:
+3. **Create .env file:** Create the file ./config.env with your Atlas URI and the server port:
+    ```text
+    MONGODB_URI=mongodb+srv://<username>:<password>@sandbox.jadwj.mongodb.net/db_name
+    PORT=3000
+    ```
+
+4. **Check the MongoDB:** Ensure MongoDB is running locally. If you're using a local installation, start MongoDB with:
     ```bash
     mongod
     ```
 
-4. **Start the application:**
-    ```bash
-    nodemon server.js
-    ```
-
-    otherwise, simply run the below **npm** command.
-
-    ```bash
-    npm start
-    ```
-
-5. **Build the application:** build the application and run the production build.
-    ```bash
-    npm run build
-    ```
-
+5. **Start the Server:**
     ```bash
     npm run dev
     ```
 
-6. **Pack the application:** packs application into `appname-version.tgz` file.
+6. **Build the application:** build the application and run the production build.
     ```bash
-    npm pack
+    npm run build
     ```
 
 7. **Access the application:** Open your browser and navigate to http://localhost:3000
@@ -67,24 +62,13 @@ A simple web application that allows users to post, edit, and delete quotes. The
 
 ## Note
 
-> - Create a `.env` file
-> - Enter your port number, eg. PORT=3000
-> - Then, enter your mongodb url, eg. MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/your_database_name
-> - Here `db_name` would be varied, so kindly use the same db_name for the whole project.
+- Creating the `.env` file is mandatory.
+- Provide the valid database name instead of `db_name`.  eg. `quote_db`
 
 
-## Sample Code:
+## Deployment
 
-1. `.env` file:
-  
-    ```text
-    PORT=3000
-    MONGODB_LOCAL_URL=mongodb://127.0.0.1:27017/quotes_db
-    ```
-
-
-## 👇 Poet App is Deployed here 
- - [Poet App](https://poet-app.onrender.com)
+ - [Poet App](https://poet-app.onrender.com/)
 
 
 ## Usage
