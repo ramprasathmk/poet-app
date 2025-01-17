@@ -4,7 +4,7 @@
 
 ## Description
 
-A simple web application that allows users to post, edit, and delete quotes. The application is built using Node.js and MongoDB.
+A simple web application that allows you to post, edit, and delete quotes. The application is built using Express and MongoDB.
 
 
 ## Features
@@ -14,13 +14,19 @@ A simple web application that allows users to post, edit, and delete quotes. The
 - Delete quotes
 - View all posted quotes
 
+[node]: https://nodejs.org/en/download
+[mongo]: https://www.mongodb.com/try/download/compass
+[code]: https://code.visualstudio.com/download
+[chrome]: https://www.google.com/chrome/
+
 
 ## Prerequsites
-
-- Node.js
-- MongoDB Compass
-- Visual Studio Code
-- Web Browser (eg. chrome)
+|  Tools    |  Version  |
+|-----------|-----------|
+| [Node.js][node]   |  20.10.0  |
+| [MongoDB Compass][mongo]  |  7.x  |
+| [Visual Studio Code][code] |  latest  |
+| [Web Browser][chrome]  |  latest  |
 
 
 ## How To Run
@@ -36,13 +42,13 @@ A simple web application that allows users to post, edit, and delete quotes. The
     npm install
     ```
 
-3. **Create .env file:** Create the file ./config.env with your Atlas URI and the server port:
+3. **Create .env file:** Create the `config.env` file in root directory.
     ```text
-    MONGODB_URI=mongodb+srv://<username>:<password>@sandbox.jadwj.mongodb.net/db_name
+    MONGODB_URI=mongodb+srv://<username>:<password>@sandbox.abcde.mongodb.net/db_name
     PORT=3000
     ```
 
-4. **Check the MongoDB:** Ensure MongoDB is running locally. If you're using a local installation, start MongoDB with:
+4. **Check the MongoDB:** Ensure MongoDB is running locally.
     ```bash
     mongod
     ```
@@ -52,12 +58,7 @@ A simple web application that allows users to post, edit, and delete quotes. The
     npm run dev
     ```
 
-6. **Build the application:** build the application and run the production build.
-    ```bash
-    npm run build
-    ```
-
-7. **Access the application:** Open your browser and navigate to http://localhost:3000
+6. **Access the application:** Open your browser and navigate to http://localhost:3000
 
 
 ## Deployment
@@ -69,14 +70,14 @@ A simple web application that allows users to post, edit, and delete quotes. The
 
 - Navigate to the home page to view all quotes.
 
-- Use the form to add a new quote.
+- Use the form to "**Add**" a new quote.
 
-- Click "Edit" to modify an existing quote.
+- Click "**Edit**" to modify an existing quote.
 
-- Click "Delete" to remove a quote.
+- Click "**Delete**" to remove a quote.
 
 
-## Technologies Used
+## Technologies
 
 - Bootstrap CSS
 
@@ -90,7 +91,6 @@ A simple web application that allows users to post, edit, and delete quotes. The
 
 - EJS (Embedded JavaScript templates)
 
-
-## Contributing
+---
 
 Feel free to modify this template to better suit your project’s specific needs. If you need further customization or have any questions, let me know!
