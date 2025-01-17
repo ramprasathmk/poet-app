@@ -60,12 +60,6 @@ A simple web application that allows users to post, edit, and delete quotes. The
 7. **Access the application:** Open your browser and navigate to http://localhost:3000
 
 
-## Note
-
-- Creating the `.env` file is mandatory.
-- Provide the valid database name instead of `db_name`.  eg. `quote_db`
-
-
 ## Deployment
 
  - [Poet App](https://poet-app.onrender.com/)
