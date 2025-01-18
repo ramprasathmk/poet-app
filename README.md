@@ -1,96 +1,87 @@
-# Quote | Poem Posting Web Application
+# Poet App
 
-[![CI](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml/badge.svg)](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml)
+Poet App is a simple web application that allows users to post, edit, and delete quotes or poems. Built using Express.js and MongoDB, it provides a straightforward interface for managing literary entries.
 
-## Description
+[![CI Status](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml/badge.svg)](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml)
 
-A simple web application that allows you to post, edit, and delete quotes. The application is built using Express and MongoDB.
 
+## Table of Contents
+
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+
+[//]: # (- [License]&#40;#license&#41;)
 
 ## Features
 
-- Post new quotes
-- Edit existing quotes
-- Delete quotes
-- View all posted quotes
+- **Post Quotes/Poems**: Add new literary entries to the collection.
+- **Edit Entries**: Modify existing quotes or poems.
+- **Delete Entries**: Remove entries from the collection.
+- **View All Entries**: Browse through all posted quotes and poems.
 
-[node]: https://nodejs.org/en/download
-[mongo]: https://www.mongodb.com/try/download/compass
-[code]: https://code.visualstudio.com/download
-[chrome]: https://www.google.com/chrome/
+## Prerequisites
 
+Before you begin, ensure you have the following tools installed:
 
-## Prerequsites
-|  Tools    |  Version  |
-|-----------|-----------|
-| [Node.js][node]   |  20.10.0  |
-| [MongoDB Compass][mongo]  |  7.x  |
-| [Visual Studio Code][code] |  latest  |
-| [Web Browser][chrome]  |  latest  |
+- **Node.js**: `>= 20.10.0`
+- **MongoDB Compass**: `>= 7.x`
+- **Visual Studio Code**: `latest`
 
+## Installation
 
-## How To Run
+1. **Clone the Repository**:
 
-1. **Clone the repo:**
-    ```bash
-    git clone https://github.com/ramprasathmk/poet-app.git
-    cd poet-app
-    ```
+   ```bash
+   git clone https://github.com/ramprasathmk/poet-app.git
+   ```
 
-2. **Install dependencies:**
-    ```bash
-    npm install
-    ```
+2. **Navigate to the Project Directory**:
 
-3. **Create .env file:** Create the `config.env` file in root directory.
-    ```text
-    MONGODB_URI=mongodb+srv://<username>:<password>@sandbox.abcde.mongodb.net/db_name
-    PORT=3000
-    ```
+   ```bash
+   cd poet-app
+   ```
 
-4. **Check the MongoDB:** Ensure MongoDB is running locally.
-    ```bash
-    mongod
-    ```
+3. **Install Dependencies**:
 
-5. **Start the Server:**
-    ```bash
-    npm run dev
-    ```
-
-6. **Access the application:** Open your browser and navigate to http://localhost:3000
-
-
-## Deployment
-
- - [Poet App](https://poet-app.onrender.com/)
-
+   ```bash
+   npm install
+   ```
 
 ## Usage
 
-- Navigate to the home page to view all quotes.
+1. **Start the Application**:
 
-- Use the form to "**Add**" a new quote.
+   ```bash
+   npm start
+   ```
 
-- Click "**Edit**" to modify an existing quote.
+2. **Access the Application**:
 
-- Click "**Delete**" to remove a quote.
+   Open your browser and navigate to `http://localhost:3000` to start using the Poet App.
 
+## Project Structure
 
-## Technologies
+The project follows a standard MVC (Model-View-Controller) architecture:
 
-- Bootstrap CSS
+- `controllers/`: Contains the logic for handling requests and responses.
+- `models/`: Defines the data schemas and interacts with the database.
+- `routes/`: Manages the routing of HTTP requests.
+- `views/`: Holds the EJS templates for rendering the frontend.
+- `public/`: Includes static assets like CSS and JavaScript files.
 
-- Node.js
+## Contributing
 
-- Express.js
+Contributions are welcome! If you have suggestions or improvements, please fork the repository and submit a pull request.
 
-- MongoDB
+[//]: # (## License)
 
-- Mongoose
-
-- EJS (Embedded JavaScript templates)
+[//]: # ()
+[//]: # (This project is licensed under the MIT License. See the [LICENSE]&#40;LICENSE&#41; file for details.)
 
 ---
 
-Feel free to modify this template to better suit your project’s specific needs. If you need further customization or have any questions, let me know!
+Thank you for using Poet App! Feel free to explore, contribute, and share your favorite quotes and poems. 
