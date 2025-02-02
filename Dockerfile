@@ -1,42 +1,59 @@
-# syntax=docker/dockerfile:1.4
+# syntax=docker/dockerfile:1
 
-# Use nodejs version
-ARG NODE_VERSION=20.10.0
+ARG NODE_VERSION=18
 
-# use the official node.js image
-FROM node:${NODE_VERSION}-alpine as development
+################################################################################
+# Base image for all stages  
+FROM node:${NODE_VERSION}-alpine AS base
 
-# Environment variable for the container
-ENV NODE_ENV production
-
-# set the working directory in the container
+# Set the working directory
 WORKDIR /usr/src/app
 
-# install dependencies
-COPY package.json /usr/src/app/package.json
-COPY package-lock.json /usr/src/app/package-lock.json
+# Install essential build tools
+# * The Container size should be reduced while commenting the below command 
+# TODO: Uncomment after checking the size of the container
+# RUN apk add --no-cache python3 make g++ 
+
+################################################################################
+# Dependencies stage
+FROM base AS deps
+
+# Copy package.json and package-lock.json for dependency installation
+COPY package.json package-lock.json* ./
+
+# Install only production dependencies for optimized builds
+RUN npm ci --only=production
+
+################################################################################
+# Build stage (if needed for assets or complex builds)
+FROM base AS build
+
+# Copy all source files for building
+COPY . .
+
+# Install full dependencies for building (including devDependencies)
 RUN npm ci
 
-COPY . /usr/src/app
+# ? Example build step (if your project has one)
+# RUN npm run build
 
+################################################################################
+# Production stage (final)
+FROM base AS final
+
+# Set environment to production
+ENV NODE_ENV=production
+
+# * Switch to non-root user for security
+USER node
+
+# * Copy only essential files from previous stages
+COPY package.json . 
+COPY --from=deps /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app . 
+
+# Expose the app port
 EXPOSE 3000
 
-
-# Run command
-CMD [ "npm", "run", "dev" ]
-
-# dev Env
-FROM development as dev-envs
-RUN <<EOF
-apt-get update
-apt-get install -y --no-install-recommends git
-EOF
-
-RUN <<EOF
-useradd -s /bin/bash -m vscode
-groupadd docker
-usermod -aG docker vscode
-EOF
-# install Docker tools (cli, buildx, compose)
-COPY --from=gloursdocker/docker / /
-CMD [ "npm", "run", "dev" ]
+# Start the application
+CMD ["npm", "start"]
