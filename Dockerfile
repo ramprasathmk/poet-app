@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1.4
 
 ARG NODE_VERSION=18
 
@@ -10,8 +10,7 @@ FROM node:${NODE_VERSION}-alpine AS base
 WORKDIR /usr/src/app
 
 # Install essential build tools
-# * The Container size should be reduced while commenting the below command 
-# TODO: Uncomment after checking the size of the container
+# TODO: Uncomment the command if you really need these dependancies
 # RUN apk add --no-cache python3 make g++ 
 
 ################################################################################
