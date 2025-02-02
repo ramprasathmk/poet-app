@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   # web
@@ -10,16 +10,27 @@ services:
       - "3000:3000"
     networks:
       - poet-app-network
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/usr/src/app
+    command: ["npm", "run", "dev"] # Dev mode for live code changes
 
   # db
   mongo:
-    image: mongo:latest
+    image: mongo:6.0
     ports:
       - "27017:27017"
     networks:
       - poet-app-network
+    volumes:
+      - mongo-data:/data/db
 
   # network
 networks:
   poet-app-network:
     driver: bridge
+
+  # volumes
+volumes:
+  mongo-data:
