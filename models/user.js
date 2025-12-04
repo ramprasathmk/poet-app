@@ -1,19 +1,19 @@
-const mongoose = require('mongoose')
-const arrType = mongoose.Types.Array
+import { Types, Schema, model } from 'mongoose';
+const arrType = Types.Array;
 
 /**
  *  User Schema {
  *      username: String, password: String, details: JSON | Object
  *  }
  */
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   username: {
-      type: String,
-      unique: true,
+    type: String,
+    unique: true
   },
   password: {
     type: String,
-    default: 'abc'
+    default: 'pass123456'
   },
   details: {
     type: JSON | Object,
@@ -27,8 +27,6 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-})
+});
 
-const User = mongoose.model('User', userSchema)
-
-module.exports = User
+export default model('User', userSchema);

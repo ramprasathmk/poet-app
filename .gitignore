@@ -21,6 +21,7 @@ playground/*
 
 # Ignore sensitive files (e.g., config or env files)
 .env
+.env.*
 
 # Ignore archives
 *.tgz

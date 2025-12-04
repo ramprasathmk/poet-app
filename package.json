@@ -1,6 +1,7 @@
 {
   "name": "poet-app",
   "version": "1.0.3",
+  "type": "module",
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
   "main": "server.js",
   "scripts": {
