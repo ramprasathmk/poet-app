@@ -1,6 +1,4 @@
-module.exports = {
-  testEnvironment: 'node',
-  testMatch: ['**/*.test.js'],
-  globalSetup: './tests/setup.js',
-  globalTeardown: './tests/teardown.js'
-}
+export const testEnvironment = 'node';
+export const testMatch = ['**/*.test.js'];
+export const globalSetup = './tests/setup.js';
+export const globalTeardown = './tests/teardown.js';
