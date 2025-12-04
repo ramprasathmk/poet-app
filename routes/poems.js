@@ -1,11 +1,11 @@
-const express = require('express')
-const router = express.Router()
-const poemsController = require('../controllers/poemsController')
+import express from 'express';
+import { getAllPoems, createPoem, getEditPoem, updatePoem, deletePoem } from '../controllers/poemsController.js';
 
-router.get('/', poemsController.getAllPoems)
-router.post('/', poemsController.createPoem)
-router.get('/:id/edit', poemsController.getEditPoem)
-router.post('/:id', poemsController.updatePoem)
-router.post('/:id/delete', poemsController.deletePoem)
+const router = express.Router();
+router.get('/', getAllPoems);
+router.post('/', createPoem);
+router.get('/:id/edit', getEditPoem);
+router.post('/:id', updatePoem);
+router.post('/:id/delete', deletePoem);
 
-module.exports = router
+export default  router;

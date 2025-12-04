@@ -1,16 +1,26 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
 
 // poem Schema
-const poemSchema = new mongoose.Schema({
-  title: String,
-  body: String,
-  author: String,
+const poemSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  body: {
+    type: String,
+    required: true
+  },
+  author: {
+    type: String,
+    required: true
+  },
   createdAt: {
+    required: true,
     type: Date,
     default: Date.now
   }
-})
+});
 
-const Poem = mongoose.model('Poem', poemSchema)
+const Poem = model('Poem', poemSchema)
 
-module.exports = Poem
+export default Poem
