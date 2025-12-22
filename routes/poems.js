@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', getAllPoems);
 router.post('/', createPoem);
 router.get('/:id/edit', getEditPoem);
-router.post('/:id', updatePoem);
-router.post('/:id/delete', deletePoem);
+router.put('/:id', updatePoem);
+router.delete('/:id/delete', deletePoem);
 
 export default  router;
