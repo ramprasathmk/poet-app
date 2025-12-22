@@ -1,6 +1,6 @@
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import express, { json } from 'express';
+import express from 'express';
 import serveStatic from 'serve-static';
 import { connect } from 'mongoose';
 import pkg from 'body-parser';
@@ -35,12 +35,13 @@ app.use(
 app.use(urlencoded({ extended: true }));
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(serveStatic(join(__dirname, 'public')));
-app.use(serveStatic(join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.use('/poems', poemRoutes);
 
 // Root Route
+// NOTE: Return response.json({ data }) for the API server application.
+//       This is Optional but good practice (Recommended) for indegrating with React Frontend.
 app.get('/', (req, res) => {
   res.render('index');
 });
