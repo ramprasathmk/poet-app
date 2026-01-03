@@ -2,23 +2,25 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import express from 'express';
 import serveStatic from 'serve-static';
-import { connect } from 'mongoose';
+import mongoose from 'mongoose';
 import pkg from 'body-parser';
 import cors from 'cors';
 import compression from 'compression';
 import { config } from 'dotenv';
 import Poem from './models/poem.js';
 import poemRoutes from './routes/poems.js';
+import { AppPort, MONGODB_URI } from './common/index.js';
 
 config();
 const { urlencoded } = pkg;
 
 // Environment Variables
-const PORT = process.env.PORT;
-const DB_URL = process.env.MONGODB_URI;
+const PORT = AppPort;
+const DB_URL = MONGODB_URI;
 
 // MongoDB Connection
-connect(DB_URL)
+mongoose
+  .connect(DB_URL)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Failed to connect to MongoDB', err));
 
@@ -64,9 +66,12 @@ app.get('/search', async (req, res) => {
   }
 });
 
-// Listen to the PORT
-const server = app.listen(PORT, () => {
-  console.log(`Server is running on port \`${PORT}\``);
-});
+   // Listen to the PORT
+let server;
+if (process.env.NODE_ENV !== 'test') {
+  server = app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
-export default { app, server };
+export { app, server };

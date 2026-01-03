@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose';
 
 // poem Schema
 const poemSchema = new Schema({
@@ -21,6 +21,6 @@ const poemSchema = new Schema({
   }
 });
 
-const Poem = model('Poem', poemSchema)
+const Poem = model('Poem', poemSchema);
 
-export default Poem
+export default Poem;
