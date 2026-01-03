@@ -1,5 +1,5 @@
-import { connection } from 'mongoose';
+import mongoose from 'mongoose';
 
 export default async () => {
-  await connection.close();
+  await mongoose.connection.close();
 };
