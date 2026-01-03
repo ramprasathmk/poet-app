@@ -1,24 +1,26 @@
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import express, { json } from 'express';
+import express from 'express';
 import serveStatic from 'serve-static';
-import { connect } from 'mongoose';
+import mongoose from 'mongoose';
 import pkg from 'body-parser';
 import cors from 'cors';
 import compression from 'compression';
 import { config } from 'dotenv';
 import Poem from './models/poem.js';
 import poemRoutes from './routes/poems.js';
+import { AppPort, MONGODB_URI } from './common/index.js';
 
 config();
 const { urlencoded } = pkg;
 
 // Environment Variables
-const PORT = process.env.PORT;
-const DB_URL = process.env.MONGODB_URI;
+const PORT = AppPort;
+const DB_URL = MONGODB_URI;
 
 // MongoDB Connection
-connect(DB_URL)
+mongoose
+  .connect(DB_URL)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Failed to connect to MongoDB', err));
 
@@ -35,12 +37,13 @@ app.use(
 app.use(urlencoded({ extended: true }));
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(serveStatic(join(__dirname, 'public')));
-app.use(serveStatic(join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.use('/poems', poemRoutes);
 
 // Root Route
+// NOTE: Return response.json({ data }) for the API server application.
+//       This is Optional but good practice (Recommended) for indegrating with React Frontend.
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -63,9 +66,12 @@ app.get('/search', async (req, res) => {
   }
 });
 
-// Listen to the PORT
-const server = app.listen(PORT, () => {
-  console.log(`Server is running on port \`${PORT}\``);
-});
+   // Listen to the PORT
+let server;
+if (process.env.NODE_ENV !== 'test') {
+  server = app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
-export default { app, server };
+export { app, server };

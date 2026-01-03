@@ -1,7 +1,7 @@
 import request from 'supertest';
-import { app, server } from '../server';
-import { connection, connect, Error } from 'mongoose';
-const DB_URL = process.env.MONGODB_URI;
+import { app } from '../server.js';
+import mongoose from 'mongoose';
+import { MONGODB_URI } from '../common/index.js';
 
 describe('GET /search', () => {
   it('should return 200 OK', async () => {
@@ -16,16 +16,15 @@ describe('GET /search', () => {
 });
 
 afterAll(async () => {
-  server.close();
-  await connection.close();
+  await mongoose.connection.close();
 });
 
 // MongoDB Database Connection Test
 describe('Database Connection', () => {
-  it('should return database connection results', async () => {
-    const database = await connect(DB_URL);
+  it('should connect to the database', async () => {
+    const database = await mongoose.connect(MONGODB_URI);
 
-    if (!database) throw Error('Database is not Connected! :(');
+    if (!database) throw new mongoose.Error('Database is not Connected! :(');
     else console.log('MongoDB Connected Successfully :)');
   });
 });

@@ -5,7 +5,7 @@
   "description": "A simple web application that allows users to post, edit, and delete poems. The application is built using Node.js and MongoDB.",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
     "start": "node server.js",
     "format": "prettier --write {**/,}*.js",
     "lint": "prettier --check {**/,}*.js",
