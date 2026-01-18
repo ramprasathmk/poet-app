@@ -4,10 +4,14 @@ Poet App is a simple web application that allows users to post, edit, and delete
 
 [![CI Status](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml/badge.svg)](https://github.com/ramprasathmk/poet-app/actions/workflows/poet-app_test.yml)
 
+## Note !
+
+- **CI Status** keeps failing due to revoke of the hosting.
 
 ## Table of Contents
 
 - [Poet App](#poet-app)
+  - [Note !](#note-)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Prerequisites](#prerequisites)
@@ -15,6 +19,7 @@ Poet App is a simple web application that allows users to post, edit, and delete
   - [Usage](#usage)
   - [Project Structure](#project-structure)
   - [Contributing](#contributing)
+  - [Thank You](#thank-you)
 
 [//]: # (- [License]&#40;#license&#41;)
 
@@ -96,4 +101,6 @@ Contributions are welcome! If you have suggestions or improvements, please fork 
 
 ---
 
-Thank you for using Poet App! Feel free to explore, contribute, and share your favorite quotes and poems. 
+## Thank You
+
+Thank you for using Poet App! Feel free to support, explore, contribute, and share your thoughts. 
