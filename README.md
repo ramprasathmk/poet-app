@@ -7,12 +7,14 @@ Poet App is a simple web application that allows users to post, edit, and delete
 
 ## Table of Contents
 
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
+- [Poet App](#poet-app)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Project Structure](#project-structure)
+  - [Contributing](#contributing)
 
 [//]: # (- [License]&#40;#license&#41;)
 
@@ -53,13 +55,23 @@ Before you begin, ensure you have the following tools installed:
 
 ## Usage
 
-1. **Start the Application**:
+1. **Create .env file in the root directory**:
+   
+   Your `.env` file must have those configs to up the server.
+
+   ```py
+   PORT=
+   MONGODB_URI=
+   NODE_ENV=
+   ```
+
+2. **Start the Application**:
 
    ```bash
    npm start
    ```
 
-2. **Access the Application**:
+3. **Access the Application**:
 
    Open your browser and navigate to `http://localhost:3000` to start using the Poet App.
 
