@@ -6,23 +6,22 @@ import mongoose from 'mongoose';
 import pkg from 'body-parser';
 import cors from 'cors';
 import compression from 'compression';
-import { config } from 'dotenv';
 import Poem from './models/poem.js';
 import poemRoutes from './routes/poems.js';
-import { AppPort, MONGODB_URI } from './common/index.js';
-
+import { config } from 'dotenv';
 config();
-const { urlencoded } = pkg;
 
 // Environment Variables
-const PORT = AppPort;
-const DB_URL = MONGODB_URI;
+const PORT = process.env.PORT || 8080;
+const DB_URL = process.env.MONGODB_URI;
+
+console.log("DB_URL =", DB_URL);
 
 // MongoDB Connection
 mongoose
-  .connect(DB_URL)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Failed to connect to MongoDB', err));
+.connect(DB_URL)
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Failed to connect to MongoDB', err));
 
 // Express Server
 const app = express();
@@ -34,7 +33,10 @@ app.use(
     credentials: true
   })
 );
+
+const { urlencoded } = pkg;
 app.use(urlencoded({ extended: true }));
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(serveStatic(join(__dirname, 'public')));
 app.set('view engine', 'ejs');
