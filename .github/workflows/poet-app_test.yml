@@ -14,8 +14,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
-        mongodb-version: ['7.0']
+        node-version: [20.x, 22.x, 24.x]
+        mongodb-version: ['7.0', '8.0']
 
     env:
       PORT: ${{ secrets.PORT }}
